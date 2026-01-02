@@ -1,0 +1,80 @@
+EXERCISE-1
+
+Part A
+-List the content of your Home Folder
+
+Solution:
+ls
+-List all the content of  folders that strts with "D" (capital)
+( if you don't have any, choose another letter )
+
+ls "D*"
+
+Part B
+-Create a file "info.txt"  in your present working directory.
+
+Solution:
+touch info.txt
+
+-Inside "info-txt" write the long list information about
+the last 4 files listed in your pwd
+
+Solution:
+ls | tail -4 > info.txt
+
+-----------------------------------------------------------------------------
+
+EXERCISE-2
+
+Part A
+-Create a file "hello.txt"  in your present working directory.
+-Rename it as "hello .sh"
+-Make this file executable only by the owner
+
+Solution:
+
+touch hello.txt
+mv hello.txt hello.sh
+chmod u=rwx hello.sh
+
+Part B
+-Read from imput a name of a file (invented by who is typing )and save it inside a variable
+-Create a file with that name using the variable 
+
+Solution:
+
+read -p "Input a filename:" name
+
+Input a filename: qwe
+
+-Create a file with that name and the prefix "1_" attached in front of it
+touch 1_$name
+
+Part C 
+
+In this Exercise we  focus on the difference between variable expansion and command substitution.
+Let's say that we want to record the exact time when we did something in the terminal.
+
+-Store the actual date and time using a variabe "important_time" and check it
+
+Solution: echo $important_time 
+Fri 2 Jan 2026 09:23:18 GMT
+
+
+ echo $important_time
+Fri 2 Jan 2026 09:23:18 GMT         //The shell performs word splitting on spaces and tabs. Multiple spaces collapse into one because echo sees separate arguments. Single space between words.
+ echo "${important_time}"
+Fri  2 Jan 2026 09:23:18 GMT       //Quoting preserves the exact string, including those extra spaces. There are two spaces before the day if it’s a single digit, because date uses fixed-width formatting.
+
+-Create a Variable "dd"  that execute the command "date". and check it
+echo $dd
+Fri 2 Jan 2026 09:23:58 GMT
+
+What is the difference between $imp_date  and   $dd  ?
+
+The difference between $imp_date (which likely holds a static value) and $dd (which is dynamically executed each time it is accessed) lies in how they store and retrieve information.
+
+$imp_date: This variable stores the result of executing the command date at the time it was set. Once you assign it, it holds that specific date and time, which does not change unless you explicitly update it by reassigning.
+
+$dd: In contrast, this variable executes the command date every time it's accessed. Therefore, if you access $dd at different times, you will get the current date and time each time, reflecting the moment of the access.
+
