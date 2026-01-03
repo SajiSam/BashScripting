@@ -1,0 +1,7 @@
+#! /bin/bash
+
+read -p "what is your username:" name
+echo "Hi $name Nice to meet you"
+echo hello this is my script
+echo bye bye !
+echo -----------------------*
